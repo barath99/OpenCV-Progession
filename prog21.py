@@ -5,13 +5,15 @@ cap = cv2.VideoCapture(0)
 
 while True:
     _, frame = cap.read()
-    frame2 = cv2.cvtColor(frame,cv2.COLOR_BGR2GRAY)
 
-    laplacian = cv2.Laplacian(frame2,cv2.CV_64F)
+    laplacian = cv2.Laplacian(frame,0)
+    sobelx = cv2.Sobel(frame,0,1,0,ksize=5)
+    sobely = cv2.Sobel(frame,0,0,1,ksize=5)
 
     cv2.imshow('original',frame)
     cv2.imshow('laplacian',laplacian)
-    cv2.imshow('frame2',frame2)
+    cv2.imshow('sobelx',sobelx)
+    cv2.imshow('sobely',sobely)
     
     
     if cv2.waitKey(1) & 0xFF == ord('x'):
