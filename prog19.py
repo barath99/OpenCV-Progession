@@ -12,8 +12,9 @@ while True:
 
     blur = cv2.GaussianBlur(frame,(101,101),0)
 
-
+    #np.ones returns an array of the dimensions in parameters filled with 1s.
     kernel = np.ones((15,15),np.float32)/225
+    
     blur = cv2.filter2D(blur, -1,kernel)
 
     ret, thresh = cv2.threshold(frame,20,255,cv2.THRESH_BINARY)
